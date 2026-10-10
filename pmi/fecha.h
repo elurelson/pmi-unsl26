@@ -4,6 +4,8 @@
 #ifndef FECHA_H_INCLUDED
 #define FECHA_H_INCLUDED
 
+//////////////////////////
+
 typedef struct fecha{
     int dia; //noviembre tiene 30 | diciembre tiene 31
     int mes; // 11 - noviembre | 12 - diciembre
