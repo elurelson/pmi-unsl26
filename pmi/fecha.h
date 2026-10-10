@@ -21,7 +21,7 @@ void init_Fecha(Fecha *f)
     (*f).mes=0;
     (*f).anio=2026;
     (*f).hora=0;
-    (*f).minuto=0;
+    (*f).minuto=-1;
     (*f).disponible=0;
 }
 
@@ -32,10 +32,18 @@ void set_Dia(Fecha *f, int dia)
 }
 void set_Mes(Fecha *f, int mes)
 {
+    /*
+    if(mes < 1 || mes >12)
+    {
+        return;
+    }
+    else
+    {   
+        //(*f).mes= mes;
+    }
+    */
     (*f).mes= mes;
 }
-// set_Anio??????!!!!
-
 void set_Hora(Fecha *f, int hora)
 {
     (*f).hora= hora;
@@ -50,25 +58,38 @@ void set_Disponible(Fecha *f, int disponible)
     (*f).disponible= disponible;
 }
 
+void set_FechaCompleta(Fecha *f, int dia, int mes, int minuto, int disponible) //anio no se pasa ya que es fijo
+{
+    (*f).dia= dia;
+    (*f).mes= mes;
+    (*f).minuto= minuto;
+    (*f).disponible= disponible;
+}
 
 //GETTERS//
 
-int get_Dia(Fecha f){
+int get_Dia(Fecha f)
+{
     return f.dia;
 }
-int get_Mes(Fecha f){
+int get_Mes(Fecha f)
+{
     return f.mes;
 }
-int get_Anio(Fecha f){
+int get_Anio(Fecha f)
+{
     return f.anio;
 }
-int get_Hora(Fecha f){
+int get_Hora(Fecha f)
+{
     return f.hora;
 }
-int get_Minuto(Fecha f){
+int get_Minuto(Fecha f)
+{
     return f.minuto;
 }
-int get_Disponible(Fecha f){
+int get_Disponible(Fecha f)
+{
     return f.disponible;
 }
 
