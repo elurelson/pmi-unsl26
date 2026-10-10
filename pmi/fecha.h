@@ -58,10 +58,11 @@ void set_Disponible(Fecha *f, int disponible)
     (*f).disponible= disponible;
 }
 
-void set_FechaCompleta(Fecha *f, int dia, int mes, int minuto, int disponible) //anio no se pasa ya que es fijo
+void set_FechaCompleta(Fecha *f, int dia, int mes, int hora, int minuto, int disponible) //anio no se pasa ya que es fijo
 {
     (*f).dia= dia;
     (*f).mes= mes;
+    (*f).hora= hora;
     (*f).minuto= minuto;
     (*f).disponible= disponible;
 }
