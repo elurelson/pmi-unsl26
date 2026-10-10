@@ -6,14 +6,15 @@
 
 //////////////////////////
 
-typedef struct fecha{
+typedef struct fecha
+{
     int dia; //noviembre tiene 30 | diciembre tiene 31
     int mes; // 11 - noviembre | 12 - diciembre
     int anio; //2026 fijo. no modificable
     int hora; // De 0 a 23hrs
     int minuto;// solo 0 o 30
     int disponible;     // 0:Libre||1:Ocupado|| VALOR POR DEFECTO LIBRE = INIT=0
-}Fecha;
+} Fecha;
 
 //INIT//
 
@@ -57,36 +58,77 @@ int set_Dia(Fecha *f, int dia)
 int set_Mes(Fecha *f, int mes)
 {
     
-    if(mes < 1 || mes >12)
-    {
-        return 0;  //Return 0= No cargado, el mes esta mal cargado
-    }
-    else
-    {   
-        (*f).mes= mes;
-        return 1; //Return 1= Cargado correctamente
-    }
+    if(mes < 1 || mes > 12) //comprobacion inicial del parametro actual mes
+        return 0;  //0= no cargado, el mes esta mal pasado
     
+    //comprobaciones en caso de que haya un dia cargado y se quiera modificar el mes
+
+    if(mes == 2 && (*f).dia > 28)
+        return 0; // a febrero se le quiso cargar un dia que no entra en el mes 
+
+    if((mes == 4 || mes == 6 || mes == 9 || mes == 11) && (*f).dia > 30)
+        return 0; //a los meses con 30 dias se le quiso cargar un dia que no entra en el mes 
+
+    if((mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) && (*f).dia > 31)
+        return 0; //a los meses con 31 dias se le quiso cargar un dia que no entra en el mes 
     
-}
-void set_Hora(Fecha *f, int hora)
-{
-    (*f).hora= hora;
+    //si el dia es 0(sin inicializar) permite pasar a cargar el mes
+    (*f).mes= mes;
+    return 1; //Return 1= Cargado correctamente
+        
 }
 
-void set_Minuto(Fecha *f, int minuto)
+int set_Hora(Fecha *f, int hora)
 {
-    (*f).minuto= minuto;
+        if (hora >= 0 && hora <= 23)
+        {
+            (*f).hora=hora;
+                return 1; //Return 1= Cargado correctamente
+        }   else{
+                return 0; //Return 0= La hora esta mal pasada
+        }
 }
-void set_Disponible(Fecha *f, int disponible)
+
+int set_Minuto(Fecha *f, int minuto)
 {
-    (*f).disponible= disponible;
+    if(minuto !=0 && minuto != 30)
+        return 0;
+    
+    (*f).minuto= minuto;
+    return 1;
+}
+
+int set_Disponible(Fecha *f, int disponible)
+{   
+    if(disponible==1||disponible==0)
+    {
+        (*f).disponible= disponible;
+        return 1; //Return 1= Cargado correctamente
+    }
+
+    else
+        return 0;  //Return 0= el disponible esta mal pasado
 }
 
 void set_FechaCompleta(Fecha *f, int dia, int mes, int hora, int minuto, int disponible) //anio no se pasa ya que es fijo
 {
-   //set_Dia()
-}
+    Fecha aux;
+    init_Fecha(&aux);
+
+    if(set_Mes(&aux, mes) == 0) //¿por que entra set mes primero?
+        return 0;
+    if(set_Dia(&aux, dia) == 0)
+        return 0;
+    if(set_Hora(&aux, hora) == 0)
+        return 0;
+    if(set_Minuto(&aux, minuto) == 0)
+        return 0;
+    if (set_Disponible(&aux, disponible) == 0)
+        return 0;
+    
+    *f=aux;
+    return 1;
+}   
 
 //GETTERS//
 
@@ -115,6 +157,8 @@ int get_Disponible(Fecha f)
     return f.disponible;
 }
 
-
-
+Fecha get_FechaCompleta(Fecha f)
+{
+    return f;
+}
 #endif // FECHA_H_INCLUDED
