@@ -26,23 +26,46 @@ void init_Fecha(Fecha *f)
 }
 
 //SETTERS//
-void set_Dia(Fecha *f, int dia)
-{
-    (*f).dia= dia;
+int set_Dia(Fecha *f, int dia)
+{   
+    if(dia >= 1 && dia <= 31)
+    {
+        if(((*f).mes==1||(*f).mes==3||(*f).mes==5||(*f).mes==7||(*f).mes==8||(*f).mes==10||(*f).mes==12) && dia <= 31)
+        {
+            (*f).dia= dia;
+            return 1;  //cargado correctamente
+        }
+        else if((*f).mes == 2 && dia <= 28)
+        {   (*f).dia= dia;
+            return 1; //cargado correctamente
+        }
+        
+        else if(((*f).mes==4||(*f).mes==6||(*f).mes==9||(*f).mes==11) && dia <= 30)
+        {
+            (*f).dia= dia;
+            return 1; //cargado correctamente
+        }
+    }
+         
+    return 0;   //dia invalido para el mes indicado o mes sin cargar
 }
-void set_Mes(Fecha *f, int mes)
+    
+    
+
+int set_Mes(Fecha *f, int mes)
 {
-    /*
+    
     if(mes < 1 || mes >12)
     {
-        return;
+        return 0;  //Return 0= No cargado, el mes esta mal cargado
     }
     else
     {   
-        //(*f).mes= mes;
+        (*f).mes= mes;
+        return 1; //Return 1= Cargado correctamente
     }
-    */
-    (*f).mes= mes;
+    
+    
 }
 void set_Hora(Fecha *f, int hora)
 {
@@ -60,11 +83,7 @@ void set_Disponible(Fecha *f, int disponible)
 
 void set_FechaCompleta(Fecha *f, int dia, int mes, int hora, int minuto, int disponible) //anio no se pasa ya que es fijo
 {
-    (*f).dia= dia;
-    (*f).mes= mes;
-    (*f).hora= hora;
-    (*f).minuto= minuto;
-    (*f).disponible= disponible;
+   //set_Dia()
 }
 
 //GETTERS//
