@@ -44,26 +44,34 @@ void set_OSocial(Paciente *p, int oSocial)
 
 //GETTERS//
 
-char* get_Nombre(Paciente p){
-char *a;
-a=(char*)malloc(strlen(p.nombre)+1);
-if(a==NULL){
-    exit(1);
-}else{
-    strcpy(a,p.nombre);
-    return a;
-}
+char* get_Nombre(Paciente p)
+{
+    char *a;
+    a=(char*)malloc(strlen(p.nombre)+1);
+    if(a==NULL)
+    {
+            exit(1);
+    }
+    else
+    {
+            strcpy(a,p.nombre);
+            return a;
+    }
 }
 
-char* get_Apellido(Paciente p){
-char *a;
-a=(char*)malloc(strlen(p.apellido)+1);
-if(a==NULL){
-    exit(1);
-}else{
-    strcpy(a,p.apellido);
-    return a;
-}
+char* get_Apellido(Paciente p)
+{
+    char *a;
+    a=(char*)malloc(strlen(p.apellido)+1);
+    if(a==NULL)
+    {
+        exit(1);
+    }
+    else
+    {
+        strcpy(a,p.apellido);
+        return a;
+    }
 }
 
 
