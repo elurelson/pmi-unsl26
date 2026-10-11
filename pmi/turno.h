@@ -117,7 +117,7 @@ float get_Monto(Turno t)
 
 Fecha get_Fecha(Turno t)
 {
-    return t.fecha;
+    return t.fecha;      //get fecha chequear 
 }
 
 int get_Estado(Turno t)
