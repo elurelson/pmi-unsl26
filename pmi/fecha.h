@@ -110,7 +110,7 @@ int set_Disponible(Fecha *f, int disponible)
         return 0;  //Return 0= el disponible esta mal pasado
 }
 
-void set_FechaCompleta(Fecha *f, int dia, int mes, int hora, int minuto, int disponible) //anio no se pasa ya que es fijo
+int set_FechaCompleta(Fecha *f, int dia, int mes, int hora, int minuto, int disponible) //anio no se pasa ya que es fijo
 {
     Fecha aux;
     init_Fecha(&aux);
