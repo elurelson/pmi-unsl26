@@ -8,7 +8,7 @@ typedef struct paciente{
     char nombre[70];
     char apellido[70];
     int dni;
-    int osocial; //1: tiene obra social| 2: no tiene obra social
+    int osocial; //1: tiene obra social| 0: no tiene obra social
 }Paciente;
 
 //INIT//
@@ -49,13 +49,12 @@ char* get_Nombre(Paciente p)
     char *a;
     a=(char*)malloc(strlen(p.nombre)+1);
     if(a==NULL)
-    {
-            exit(1);
-    }
+        exit(1);
+    
     else
     {
-            strcpy(a,p.nombre);
-            return a;
+        strcpy(a,p.nombre);
+        return a;
     }
 }
 
