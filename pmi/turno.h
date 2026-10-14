@@ -6,7 +6,7 @@
 #define TURNO_H_INCLUDED
 typedef struct
 {
-    int id_turno; //DEl 1 al 390aprox
+    int id_turno;       //unico
     int dni_paciente;   //unico
     float monto;        //monto solo si no posee obra social, si posee monto=0
     int mutual;         //0 -> sin mutual || >= 0 -> 4 mutuales 1:2:3:4: a definir
@@ -33,9 +33,6 @@ int set_IdTurno(Turno *t, int id_t)
     {
         return 0;
     }   
-
-    if(id_t < 0 || id_t > 389)
-        return 0;
     
     (*t).id_turno= id_t;
         return 1;
