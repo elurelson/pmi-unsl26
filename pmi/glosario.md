@@ -1,5 +1,8 @@
 **CONSULTAS**
 
+##GENERAL
+los ctontroles debemos hacerlos desde el MAIN o en el TDA??????????????????????????????????
+
 ##Paciente
 consultar cantidad de espacios en los strings EJ: Nombre[70]
 validar tambien datos de paciente en el tda? ya que solo en el tda fecha dice sobre operaciones y restricciones. p/ el resto, hacemos las valdiaciones en el main? o tambien en el tda
