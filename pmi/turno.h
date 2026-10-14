@@ -6,7 +6,7 @@
 #define TURNO_H_INCLUDED
 typedef struct
 {
-    int id_turno; //DEl 1 al 390aprox
+    int id_turno;       //unico
     int dni_paciente;   //unico
     float monto;        //monto solo si no posee obra social, si posee monto=0
     int mutual;         //0 -> sin mutual || >= 0 -> 4 mutuales 1:2:3:4: a definir
@@ -27,75 +27,34 @@ void init_Turno(Turno *t)
 
 //SETTERS//
 
-int set_IdTurno(Turno *t, int id_t)
+void set_IdTurno(Turno *t, int id_t)
 {
-    if((*t).id_turno != -1)
-    {
-        return 0;
-    }   
-
-    if(id_t < 0 || id_t > 389)
-        return 0;
-    
-    (*t).id_turno= id_t;
-        return 1;
-    
+     (*t).id_turno = id_t;
 }
 
-int set_DniPaciente(Turno *t, int dni_paciente)
+void set_DniPaciente(Turno *t, int dni_paciente)
 {
-    if((*t).dni_paciente != -1)
-        return 0;
-    
-    (*t).dni_paciente= dni_paciente;
-    return 1;
+    (*t).dni_paciente = dni_paciente;
 }
 
-int set_Monto(Turno *t, float monto_paciente)
-{
-    if((*t).monto != -1)
-        return 0;
-
-    if(monto_paciente < -1)
-        return 0;
-    
-    
-    (*t).monto= monto_paciente;
-        return 1;
-    
+void set_Monto(Turno *t, float monto_paciente)
+{    
+    (*t).monto= monto_paciente;   
 }
 
-int set_Mutual(Turno *t, int mutual_paciente)
+void set_Mutual(Turno *t, int mutual_paciente)
 {
-    if((*t).mutual != -1)
-    {
-        return 0;
-    }
-    if(mutual_paciente < 0 || mutual_paciente > 4)
-    {
-        return 0;
-    }
-  
-    (*t).mutual= mutual_paciente;
-    return 1;
+    (*t).mutual= mutual_paciente;   
 }
 
-int set_FechaTurno(Turno *t, Fecha fecha_turno)
+void set_FechaTurno(Turno *t, Fecha fecha_turno)
 {
     (*t).fecha= fecha_turno;   
 }
 
-int set_Estado(Turno *t, int estado)
+void set_Estado(Turno *t, int estado)
 {
-    if(estado < 0 || estado > 4)
-    {
-        return 0;
-    }
-    else
-    {
         (*t).estado=estado;
-    }
-
 }
 
 //GETTERS//
@@ -117,7 +76,7 @@ float get_Monto(Turno t)
 
 Fecha get_Fecha(Turno t)
 {
-    return t.fecha;      //get fecha chequear 
+    return t.fecha;    
 }
 
 int get_Estado(Turno t)
