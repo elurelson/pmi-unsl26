@@ -16,7 +16,7 @@ typedef struct
 } Lista_Turno;
 
 // INIT LISTA//
-void init_Lista(Lista_Turno *l)
+void init_ListaTurno(Lista_Turno *l)
 {
     l->acc = NULL;
     l->cur = NULL;
@@ -25,7 +25,7 @@ void init_Lista(Lista_Turno *l)
 
 // PREDICADOS//
 
-int isEmpty(Lista_Turno l)
+int isEmpty_ListaTurno(Lista_Turno l)
 {
     if (l.acc == NULL)
     {
@@ -37,7 +37,7 @@ int isEmpty(Lista_Turno l)
     }
 }
 
-int isOos(Lista_Turno l)
+int isOos_ListaTurno(Lista_Turno l)
 {
     if (l.cur == NULL)
     {
@@ -49,34 +49,41 @@ int isOos(Lista_Turno l)
     }
 }
 
-int isFull(Lista_Turno l)
+int isFull_ListaTurno(Lista_Turno l) // consultar
 {
-    if (l.cur == NULL && l.aux != NULL)
+    Nodo *prueba;
+    prueba = (Nodo *)malloc(sizeof(Nodo));
+    if (prueba == NULL)
+    
         return 1;
-    else
-        return 0;
+
+    free(prueba);
+    return 0;
 }
 
 // OPERACIONES//
-void forwards(Lista_Turno *l)
+void forwards_ListaTurno(Lista_Turno *l)
 {
     l->aux = l->cur;
     l->cur = l->cur->next;
 }
-void reset(Lista_Turno *l)
+void reset_ListaTurno(Lista_Turno *l)
 {
     l->aux = NULL;
     l->cur = l->acc;
 }
 
-void copy(Lista_Turno *l, Turno *copiado)
+void copy_ListaTurno(Lista_Turno *l, Turno *copiado)
 {
     if (!isOos(*l))
         *copiado = l->cur->vipd;
 }
-void insert(Lista_Turno *l, Turno nuevoturno)
+void insert_ListaTurno(Lista_Turno *l, Turno nuevoturno)
 {
     Nodo *nuevo = (Nodo *)malloc(sizeof(Nodo));
+
+    if (nuevo == NULL)
+        return;
 
     nuevo->vipd = nuevoturno;
     nuevo->next = l->cur;
@@ -91,7 +98,7 @@ void insert(Lista_Turno *l, Turno nuevoturno)
     l->cur = nuevo;
 }
 
-void supress(Lista_Turno *l)
+void supress_ListaTurno(Lista_Turno *l)
 {
     if (isOos(*l))
         return;
